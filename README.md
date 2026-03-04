@@ -5,10 +5,13 @@ Simple React + Redux web application for ordering food.
 The app lets users:
 
 - Select food types (categories)
-- Browse menu items with descriptions
+- Browse menu items with descriptions, serves, and ingredient lists
 - View nutritional values (calories, protein, carbs, fat)
+- Click food images to zoom in/out
 - Add and remove items from an order
-- Adjust item quantities and see order totals
+- Adjust item quantities and see order totals + nutrition summary
+- Fill customer and payment details in a checkout form
+- Simulate placing an order and receive an order confirmation message
 
 ## Tech Stack
 
@@ -52,6 +55,15 @@ npm start
 ```
 
 The server listens on `PORT` or defaults to `3000`.
+
+## Checkout Simulation
+
+The checkout form in the order panel collects:
+
+- Customer information (name, email, phone, address)
+- Payment information (name on card, card number, expiry, CVV)
+
+`Place Order` is a front-end simulation only. No real payment is processed.
 
 ## Deployment Options
 
