@@ -65,6 +65,14 @@ The checkout form in the order panel collects:
 
 `Place Order` is a front-end simulation only. No real payment is processed.
 
+## How to Place an Order
+
+1. Select a category to filter the menu.
+2. Click **Add to Order** on one or more items.
+3. In **Current Order**, adjust quantities if needed.
+4. Complete all checkout fields (customer + payment details).
+5. Click **Place Order** to simulate checkout and view the confirmation message.
+
 ## Deployment Options
 
 This repository is configured for Node-based hosting with:
