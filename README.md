@@ -53,15 +53,20 @@ npm start
 
 The server listens on `PORT` or defaults to `3000`.
 
-## Heroku Deployment
+## Deployment Options
 
-This repository is configured for Heroku with:
+This repository is configured for Node-based hosting with:
 
 - `Procfile` (`web: npm start`)
 - `heroku-postbuild` script to generate the Vite build
 - Express server (`server.js`) to serve `dist`
+- Node version in `package.json` via `engines.node`
 
-### Deploy with Heroku CLI
+### Option A: Heroku (paid)
+
+> Note: Heroku no longer has a free tier.
+
+Deploy with Heroku CLI:
 
 ```bash
 heroku login
@@ -70,6 +75,30 @@ git push heroku main
 heroku open
 ```
 
-### Optional: set Node version
+Useful troubleshooting command:
 
-The project includes an `engines.node` field in `package.json`.
+```bash
+heroku logs --tail
+```
+
+### Option B: Render (free tier)
+
+1. Push this repository to GitHub.
+2. In Render, click **New +** → **Web Service**.
+3. Connect your GitHub repo and select the `main` branch.
+4. Use these settings:
+	- **Build Command:** `npm install && npm run build`
+	- **Start Command:** `npm start`
+	- **Plan:** `Free`
+5. Click **Create Web Service**.
+
+> Note: Free Render services can sleep when idle.
+
+### Option C: Netlify or Vercel (free static hosting)
+
+This app can also be hosted as a static SPA.
+
+- **Build Command:** `npm run build`
+- **Publish Directory:** `dist`
+
+For client-side routes, add a rewrite rule to `/index.html` if your host requires it.
