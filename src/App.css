@@ -1,0 +1,582 @@
+.page {
+  margin: 0 auto;
+  max-width: 1160px;
+  padding: 2rem 1rem 2.6rem;
+  color: #f7f0e1;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.35rem;
+  padding: 2rem 1.6rem;
+  border-radius: 18px;
+  border: 1px solid rgba(214, 177, 92, 0.32);
+  background-image:
+    linear-gradient(128deg, rgba(19, 14, 10, 0.84), rgba(33, 23, 16, 0.74)),
+    url('./assets/healthy/italian-street-piadina-fold.jpeg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 22px 42px rgba(0, 0, 0, 0.45);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 15% 20%, rgba(238, 203, 121, 0.16), transparent 38%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  position: relative;
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fcf8f1;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+}
+
+.hero .restaurant-script {
+  margin-left: 0.25rem;
+  font-family: 'Brush Script MT', 'Segoe Script', 'Lucida Handwriting', cursive;
+  font-size: 1.22em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.hero p {
+  position: relative;
+  margin-top: 0.6rem;
+  max-width: 40rem;
+  color: #f0e2c5;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.62rem;
+  margin-bottom: 1.3rem;
+}
+
+.category-button {
+  border: 1px solid #705335;
+  background: linear-gradient(180deg, #35281d, #261d15);
+  color: #ecd9b1;
+  border-radius: 9999px;
+  padding: 0.44rem 0.98rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.category-button:hover {
+  border-color: #c89a49;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+  transform: translateY(-1px);
+}
+
+.category-button.active {
+  border-color: #d6b15c;
+  background: linear-gradient(180deg, #e9cb89, #c39342);
+  color: #2c1f13;
+  box-shadow: 0 8px 20px rgba(214, 177, 92, 0.34);
+}
+
+.content-grid {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: 2fr 1fr;
+  align-items: start;
+}
+
+.menu-panel,
+.order-panel {
+  border: 1px solid rgba(214, 177, 92, 0.26);
+  border-radius: 14px;
+  padding: 1.05rem;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.36);
+}
+
+.menu-panel {
+  background-image:
+    linear-gradient(rgba(14, 10, 8, 0.9), rgba(14, 10, 8, 0.93)),
+    url('./assets/healthy/classic-tomato-bruschetta.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.order-panel {
+  background-image:
+    linear-gradient(rgba(17, 12, 9, 0.91), rgba(17, 12, 9, 0.95)),
+    url('./assets/healthy/mini-egg-frittatas.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.menu-panel h2,
+.order-panel h2 {
+  margin: 0 0 0.95rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.28rem;
+  color: #f5e4bd;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.menu-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.menu-card {
+  border: 1px solid rgba(214, 177, 92, 0.3);
+  border-radius: 12px;
+  padding: 0.92rem;
+  background-image:
+    linear-gradient(140deg, rgba(23, 16, 12, 0.9), rgba(34, 24, 18, 0.86)),
+    linear-gradient(rgba(7, 5, 4, 0.28), rgba(7, 5, 4, 0.35)),
+    var(--menu-card-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.28);
+}
+
+.menu-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.menu-card-header h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  color: #fff8ec;
+}
+
+.menu-card-header span {
+  background: linear-gradient(180deg, #efcf8b, #c59544);
+  color: #2e2013;
+  border: 1px solid rgba(255, 236, 192, 0.55);
+  border-radius: 9999px;
+  padding: 0.14rem 0.52rem;
+  font-weight: 700;
+}
+
+.food-image-button {
+  display: block;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0.5rem 0 0.68rem;
+}
+
+.food-image {
+  width: 100%;
+  height: 168px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 236, 192, 0.35);
+  margin: 0;
+  background: rgba(28, 20, 14, 0.88);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+    0 10px 20px rgba(0, 0, 0, 0.32);
+  transition: height 180ms ease, transform 180ms ease;
+  cursor: zoom-in;
+}
+
+.food-image.zoomed {
+  height: 440px;
+  transform: translateY(-2px);
+  cursor: zoom-out;
+}
+
+.menu-card p {
+  margin: 0.55rem 0 0.7rem;
+  color: #ecddbf;
+}
+
+.serves-text {
+  margin: 0 0 0.7rem;
+  font-size: 0.9rem;
+  color: #d9c5a0;
+}
+
+.nutrition-list {
+  list-style: none;
+  margin: 0 0 0.78rem;
+  padding: 0.52rem 0.65rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem 0.8rem;
+  font-size: 0.84rem;
+  color: #f0dfc0;
+  border: 1px solid rgba(214, 177, 92, 0.23);
+  border-radius: 8px;
+  background: rgba(13, 9, 7, 0.46);
+}
+
+.ingredients-block {
+  margin: 0 0 0.8rem;
+  color: #e9d9bb;
+  font-size: 0.84rem;
+}
+
+.ingredients-list {
+  margin: 0.35rem 0 0;
+  padding-left: 1rem;
+}
+
+.ingredients-list li + li {
+  margin-top: 0.18rem;
+}
+
+.add-button {
+  width: 100%;
+  border: 1px solid rgba(255, 236, 192, 0.35);
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e0be77, #c38f3e);
+  color: #24180e;
+  padding: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.26);
+  transition: filter 140ms ease, transform 140ms ease;
+}
+
+.add-button:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.order-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.order-panel-header span {
+  color: #d9c5a0;
+  font-size: 0.88rem;
+}
+
+.empty-order {
+  margin: 0;
+  color: #d2bc95;
+}
+
+.order-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.order-item {
+  border: 1px solid rgba(214, 177, 92, 0.26);
+  border-radius: 10px;
+  padding: 0.66rem;
+  background: rgba(24, 17, 12, 0.78);
+}
+
+.order-item h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #fff8ec;
+}
+
+.order-item p {
+  margin: 0.2rem 0 0;
+  font-size: 0.84rem;
+  color: #dbc7a3;
+}
+
+.order-serves {
+  margin-top: 0.28rem;
+  font-size: 0.8rem;
+  color: #e6d4b4;
+}
+
+.order-ingredients-preview {
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  color: #cdb58c;
+}
+
+.order-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.38rem;
+  margin-top: 0.55rem;
+  color: #f6ead3;
+}
+
+.qty-button {
+  border: 1px solid rgba(214, 177, 92, 0.35);
+  background: rgba(30, 21, 15, 0.9);
+  border-radius: 6px;
+  min-width: 28px;
+  height: 28px;
+  padding: 0;
+  color: #f7e5be;
+}
+
+.remove-button {
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  color: #f0b6a8;
+  padding: 0;
+}
+
+.order-summary {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(214, 177, 92, 0.25);
+  padding-top: 0.85rem;
+}
+
+.order-summary p {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  color: #e5d1ad;
+}
+
+.order-summary strong {
+  color: #fff6e3;
+}
+
+.order-summary p + p {
+  margin-top: 0.4rem;
+}
+
+.clear-button {
+  width: 100%;
+  margin-top: 0.9rem;
+  border: 1px solid rgba(214, 177, 92, 0.42);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(53, 38, 27, 0.95), rgba(40, 28, 20, 0.95));
+  color: #f0debb;
+  padding: 0.58rem;
+  font-weight: 600;
+}
+
+.clear-button:disabled {
+  cursor: not-allowed;
+  color: #8d7b5b;
+  border-color: rgba(141, 123, 91, 0.45);
+}
+
+.theme-casual {
+  color: #2f271c;
+}
+
+.theme-casual .hero {
+  border-color: rgba(246, 226, 185, 0.5);
+  background-image:
+    linear-gradient(122deg, rgba(86, 57, 33, 0.72), rgba(116, 75, 45, 0.62)),
+    url('./assets/healthy/italian-street-piadina-fold.jpeg');
+  box-shadow: 0 18px 30px rgba(10, 6, 3, 0.3);
+}
+
+.theme-casual .hero::after {
+  background: radial-gradient(circle at 15% 20%, rgba(255, 236, 197, 0.24), transparent 42%);
+}
+
+.theme-casual .hero h1 {
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  color: #fffdf8;
+}
+
+.theme-casual .hero .restaurant-script {
+  color: #ffe8bd;
+}
+
+.theme-casual .hero p {
+  color: #fff2d8;
+}
+
+.theme-casual .category-button {
+  border-color: #e8d3a9;
+  background: linear-gradient(180deg, #fff8e9, #f4ead3);
+  color: #5f4328;
+}
+
+.theme-casual .category-button:hover {
+  border-color: #d1ac6b;
+  box-shadow: 0 7px 14px rgba(85, 52, 24, 0.18);
+}
+
+.theme-casual .category-button.active {
+  border-color: #c98b3b;
+  background: linear-gradient(180deg, #f3bf6c, #e59d3a);
+  color: #402710;
+  box-shadow: 0 7px 16px rgba(212, 145, 59, 0.34);
+}
+
+.theme-casual .menu-panel,
+.theme-casual .order-panel {
+  border-color: rgba(184, 136, 74, 0.3);
+  box-shadow: 0 14px 24px rgba(60, 36, 16, 0.2);
+}
+
+.theme-casual .menu-panel {
+  background-image:
+    linear-gradient(rgba(255, 249, 238, 0.95), rgba(255, 249, 238, 0.96)),
+    url('./assets/healthy/classic-tomato-bruschetta.jpeg');
+}
+
+.theme-casual .order-panel {
+  background-image:
+    linear-gradient(rgba(255, 250, 240, 0.96), rgba(255, 250, 240, 0.97)),
+    url('./assets/healthy/mini-egg-frittatas.jpeg');
+}
+
+.theme-casual .menu-panel h2,
+.theme-casual .order-panel h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: #6b4223;
+}
+
+.theme-casual .menu-card {
+  border-color: rgba(191, 142, 81, 0.34);
+  background-image:
+    linear-gradient(150deg, rgba(255, 251, 245, 0.94), rgba(255, 248, 238, 0.92)),
+    linear-gradient(rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.2)),
+    var(--menu-card-image);
+  box-shadow: 0 8px 16px rgba(90, 57, 27, 0.18);
+}
+
+.theme-casual .menu-card-header h3 {
+  color: #402610;
+}
+
+.theme-casual .menu-card-header span {
+  background: linear-gradient(180deg, #f7d18f, #e9ad5b);
+  color: #4f2f14;
+  border-color: rgba(230, 171, 98, 0.6);
+}
+
+.theme-casual .food-image {
+  border-color: rgba(198, 157, 103, 0.4);
+  background: rgba(255, 253, 246, 0.94);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    0 8px 16px rgba(77, 48, 22, 0.2);
+}
+
+.theme-casual .menu-card p {
+  color: #553a22;
+}
+
+.theme-casual .serves-text {
+  color: #66472d;
+}
+
+.theme-casual .nutrition-list {
+  color: #614129;
+  border-color: rgba(191, 142, 81, 0.3);
+  background: rgba(255, 251, 245, 0.74);
+}
+
+.theme-casual .ingredients-block {
+  color: #5e4128;
+}
+
+.theme-casual .add-button {
+  border-color: rgba(111, 154, 96, 0.45);
+  background: linear-gradient(90deg, #8ac17b, #5f9e57);
+  color: #11290f;
+  box-shadow: 0 8px 16px rgba(42, 88, 34, 0.24);
+}
+
+.theme-casual .order-panel-header span,
+.theme-casual .empty-order,
+.theme-casual .order-item p,
+.theme-casual .order-serves,
+.theme-casual .order-ingredients-preview,
+.theme-casual .order-summary p {
+  color: #69472b;
+}
+
+.theme-casual .order-item {
+  border-color: rgba(191, 142, 81, 0.3);
+  background: rgba(255, 252, 245, 0.77);
+}
+
+.theme-casual .order-item h3,
+.theme-casual .order-controls,
+.theme-casual .order-summary strong {
+  color: #442a13;
+}
+
+.theme-casual .qty-button {
+  border-color: rgba(188, 143, 86, 0.44);
+  background: rgba(255, 248, 236, 0.9);
+  color: #4f3118;
+}
+
+.theme-casual .remove-button {
+  color: #9b3f35;
+}
+
+.theme-casual .order-summary {
+  border-top-color: rgba(188, 143, 86, 0.35);
+}
+
+.theme-casual .clear-button {
+  border-color: rgba(187, 144, 85, 0.5);
+  background: linear-gradient(180deg, rgba(252, 242, 224, 0.96), rgba(245, 229, 203, 0.97));
+  color: #6d4826;
+}
+
+.theme-casual .clear-button:disabled {
+  color: #b29168;
+  border-color: rgba(196, 166, 127, 0.45);
+}
+
+.category-button:focus-visible,
+.food-image-button:focus-visible,
+.add-button:focus-visible,
+.qty-button:focus-visible,
+.remove-button:focus-visible,
+.clear-button:focus-visible {
+  outline: 2px solid #f0cf88;
+  outline-offset: 2px;
+}
+
+@media (max-width: 880px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 1.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .food-image.zoomed {
+    height: 310px;
+  }
+
+  .nutrition-list {
+    grid-template-columns: 1fr;
+  }
+}
