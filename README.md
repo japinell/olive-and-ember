@@ -102,3 +102,17 @@ This app can also be hosted as a static SPA.
 - **Publish Directory:** `dist`
 
 For client-side routes, add a rewrite rule to `/index.html` if your host requires it.
+
+For Netlify, this repository already includes `netlify.toml` with an SPA fallback redirect to `/index.html`.
+
+## One-Click Deploy
+
+Use these links to deploy directly from GitHub:
+
+- **Render (Blueprint + free tier):**
+	[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/japinell/olive-and-ember)
+
+- **Vercel (static deploy):**
+	[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/japinell/olive-and-ember)
+
+> Render uses the included `render.yaml` blueprint in this repository.
