@@ -21,9 +21,22 @@ import {
   selectOrderTotal,
 } from './features/order/orderSlice'
 
+const createInitialCheckoutForm = () => ({
+  customerName: '',
+  customerEmail: '',
+  customerPhone: '',
+  deliveryAddress: '',
+  cardholderName: '',
+  cardNumber: '',
+  cardExpiry: '',
+  cardCvc: '',
+})
+
 function App() {
   const dispatch = useDispatch()
   const [zoomedImageId, setZoomedImageId] = useState(null)
+  const [orderFeedback, setOrderFeedback] = useState('')
+  const [checkoutForm, setCheckoutForm] = useState(createInitialCheckoutForm)
   const categories = useSelector(selectCategories)
   const selectedCategory = useSelector(selectSelectedCategory)
   const menuItems = useSelector(selectMenuItems)
@@ -39,6 +52,50 @@ function App() {
     selectedCategory === 'All'
       ? menuItems
       : menuItems.filter((item) => item.category === selectedCategory)
+
+  const handleCheckoutFieldChange = (event) => {
+    const { name, value } = event.target
+    setCheckoutForm((currentForm) => ({
+      ...currentForm,
+      [name]: value,
+    }))
+  }
+
+  const handlePlaceOrder = (event) => {
+    event.preventDefault()
+
+    if (orderItems.length === 0) {
+      setOrderFeedback('Add at least one menu item before placing an order.')
+      return
+    }
+
+    const hasAllCheckoutDetails = Object.values(checkoutForm).every(
+      (value) => value.trim().length > 0,
+    )
+
+    if (!hasAllCheckoutDetails) {
+      setOrderFeedback(
+        'Please complete customer and payment details before placing your order.',
+      )
+      return
+    }
+
+    const orderNumber = Math.floor(100000 + Math.random() * 900000)
+    const placedTotal = orderTotal.toFixed(2)
+    const customerFirstName = checkoutForm.customerName.trim().split(' ')[0]
+
+    setOrderFeedback(
+      `Thanks ${customerFirstName}! Order #${orderNumber} placed successfully. Total charged: $${placedTotal}.`,
+    )
+    setCheckoutForm(createInitialCheckoutForm())
+    dispatch(clearOrder())
+  }
+
+  const handleClearOrder = () => {
+    setOrderFeedback('')
+    setCheckoutForm(createInitialCheckoutForm())
+    dispatch(clearOrder())
+  }
 
   return (
     <div className="page theme-casual">
@@ -220,13 +277,150 @@ function App() {
             </p>
           </div>
 
+          <form className="checkout-form" onSubmit={handlePlaceOrder}>
+            <h3 className="checkout-section-title">Customer Information</h3>
+            <div className="checkout-grid">
+              <label className="checkout-field" htmlFor="customerName">
+                <span>Full Name</span>
+                <input
+                  id="customerName"
+                  name="customerName"
+                  type="text"
+                  value={checkoutForm.customerName}
+                  onChange={handleCheckoutFieldChange}
+                  autoComplete="name"
+                  required
+                />
+              </label>
+
+              <label className="checkout-field" htmlFor="customerEmail">
+                <span>Email</span>
+                <input
+                  id="customerEmail"
+                  name="customerEmail"
+                  type="email"
+                  value={checkoutForm.customerEmail}
+                  onChange={handleCheckoutFieldChange}
+                  autoComplete="email"
+                  required
+                />
+              </label>
+
+              <label className="checkout-field" htmlFor="customerPhone">
+                <span>Phone</span>
+                <input
+                  id="customerPhone"
+                  name="customerPhone"
+                  type="tel"
+                  value={checkoutForm.customerPhone}
+                  onChange={handleCheckoutFieldChange}
+                  autoComplete="tel"
+                  required
+                />
+              </label>
+
+              <label
+                className="checkout-field checkout-field-full"
+                htmlFor="deliveryAddress"
+              >
+                <span>Address</span>
+                <input
+                  id="deliveryAddress"
+                  name="deliveryAddress"
+                  type="text"
+                  value={checkoutForm.deliveryAddress}
+                  onChange={handleCheckoutFieldChange}
+                  autoComplete="street-address"
+                  required
+                />
+              </label>
+            </div>
+
+            <h3 className="checkout-section-title">Payment Information</h3>
+            <div className="checkout-grid">
+              <label
+                className="checkout-field checkout-field-full"
+                htmlFor="cardholderName"
+              >
+                <span>Name on Card</span>
+                <input
+                  id="cardholderName"
+                  name="cardholderName"
+                  type="text"
+                  value={checkoutForm.cardholderName}
+                  onChange={handleCheckoutFieldChange}
+                  autoComplete="cc-name"
+                  required
+                />
+              </label>
+
+              <label className="checkout-field" htmlFor="cardNumber">
+                <span>Card Number</span>
+                <input
+                  id="cardNumber"
+                  name="cardNumber"
+                  type="text"
+                  value={checkoutForm.cardNumber}
+                  onChange={handleCheckoutFieldChange}
+                  autoComplete="cc-number"
+                  inputMode="numeric"
+                  placeholder="1234 5678 9012 3456"
+                  required
+                />
+              </label>
+
+              <label className="checkout-field" htmlFor="cardExpiry">
+                <span>Expiry</span>
+                <input
+                  id="cardExpiry"
+                  name="cardExpiry"
+                  type="text"
+                  value={checkoutForm.cardExpiry}
+                  onChange={handleCheckoutFieldChange}
+                  autoComplete="cc-exp"
+                  placeholder="MM/YY"
+                  required
+                />
+              </label>
+
+              <label className="checkout-field" htmlFor="cardCvc">
+                <span>CVV</span>
+                <input
+                  id="cardCvc"
+                  name="cardCvc"
+                  type="password"
+                  value={checkoutForm.cardCvc}
+                  onChange={handleCheckoutFieldChange}
+                  autoComplete="cc-csc"
+                  inputMode="numeric"
+                  maxLength={4}
+                  required
+                />
+              </label>
+            </div>
+
+            <button
+              className="place-order-button"
+              type="submit"
+              disabled={orderItems.length === 0}
+            >
+              Place Order
+            </button>
+          </form>
+
           <button
             className="clear-button"
-            onClick={() => dispatch(clearOrder())}
+            onClick={handleClearOrder}
             disabled={orderItems.length === 0}
           >
             Clear Order
           </button>
+
+          {orderFeedback && (
+            <p className="order-feedback" role="status" aria-live="polite">
+              {orderFeedback}
+            </p>
+          )}
         </aside>
       </div>
     </div>

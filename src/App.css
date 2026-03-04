@@ -362,6 +362,60 @@
   margin-top: 0.4rem;
 }
 
+.checkout-form {
+  margin-top: 0.95rem;
+  border-top: 1px solid rgba(214, 177, 92, 0.25);
+  padding-top: 0.85rem;
+}
+
+.checkout-section-title {
+  margin: 0;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #f0debb;
+}
+
+.checkout-grid {
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem 0.65rem;
+}
+
+.checkout-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.24rem;
+}
+
+.checkout-field-full {
+  grid-column: 1 / -1;
+}
+
+.checkout-field span {
+  font-size: 0.76rem;
+  color: #dbc7a3;
+}
+
+.checkout-field input {
+  border: 1px solid rgba(214, 177, 92, 0.35);
+  background: rgba(30, 21, 15, 0.9);
+  border-radius: 7px;
+  color: #f7e5be;
+  padding: 0.46rem 0.55rem;
+  font-size: 0.84rem;
+}
+
+.checkout-field input::placeholder {
+  color: #a58b61;
+}
+
+.checkout-field input:focus-visible {
+  outline: 2px solid #f0cf88;
+  outline-offset: 1px;
+}
+
 .clear-button {
   width: 100%;
   margin-top: 0.9rem;
@@ -371,6 +425,33 @@
   color: #f0debb;
   padding: 0.58rem;
   font-weight: 600;
+}
+
+.place-order-button {
+  width: 100%;
+  margin-top: 0.9rem;
+  border: 1px solid rgba(255, 236, 192, 0.36);
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e0be77, #c38f3e);
+  color: #24180e;
+  padding: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.26);
+}
+
+.place-order-button:disabled {
+  cursor: not-allowed;
+  color: #8d7b5b;
+  border-color: rgba(141, 123, 91, 0.45);
+  background: linear-gradient(180deg, rgba(53, 38, 27, 0.95), rgba(40, 28, 20, 0.95));
+  box-shadow: none;
+}
+
+.order-feedback {
+  margin: 0.75rem 0 0;
+  font-size: 0.84rem;
+  color: #f0debb;
 }
 
 .clear-button:disabled {
@@ -540,10 +621,50 @@
   border-top-color: rgba(188, 143, 86, 0.35);
 }
 
+.theme-casual .checkout-form {
+  border-top-color: rgba(188, 143, 86, 0.35);
+}
+
+.theme-casual .checkout-section-title {
+  color: #6b4223;
+}
+
+.theme-casual .checkout-field span {
+  color: #69472b;
+}
+
+.theme-casual .checkout-field input {
+  border-color: rgba(188, 143, 86, 0.44);
+  background: rgba(255, 248, 236, 0.9);
+  color: #4f3118;
+}
+
+.theme-casual .checkout-field input::placeholder {
+  color: #9d7d57;
+}
+
 .theme-casual .clear-button {
   border-color: rgba(187, 144, 85, 0.5);
   background: linear-gradient(180deg, rgba(252, 242, 224, 0.96), rgba(245, 229, 203, 0.97));
   color: #6d4826;
+}
+
+.theme-casual .place-order-button {
+  border-color: rgba(111, 154, 96, 0.45);
+  background: linear-gradient(90deg, #8ac17b, #5f9e57);
+  color: #11290f;
+  box-shadow: 0 8px 16px rgba(42, 88, 34, 0.24);
+}
+
+.theme-casual .place-order-button:disabled {
+  color: #b29168;
+  border-color: rgba(196, 166, 127, 0.45);
+  background: linear-gradient(180deg, rgba(252, 242, 224, 0.96), rgba(245, 229, 203, 0.97));
+  box-shadow: none;
+}
+
+.theme-casual .order-feedback {
+  color: #69472b;
 }
 
 .theme-casual .clear-button:disabled {
@@ -554,6 +675,7 @@
 .category-button:focus-visible,
 .food-image-button:focus-visible,
 .add-button:focus-visible,
+.place-order-button:focus-visible,
 .qty-button:focus-visible,
 .remove-button:focus-visible,
 .clear-button:focus-visible {
@@ -574,6 +696,10 @@
 @media (max-width: 600px) {
   .food-image.zoomed {
     height: 310px;
+  }
+
+  .checkout-grid {
+    grid-template-columns: 1fr;
   }
 
   .nutrition-list {
