@@ -5,6 +5,28 @@
   color: #f7f0e1;
 }
 
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -40px;
+  z-index: 20;
+  border-radius: 8px;
+  padding: 0.45rem 0.7rem;
+  background: #f8f3e5;
+  color: #2d2014;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  top: 0.9rem;
+  outline: 2px solid #f0cf88;
+}
+
+.main-content {
+  display: block;
+}
+
 .hero {
   position: relative;
   overflow: hidden;
@@ -67,6 +89,7 @@
   background: linear-gradient(180deg, #35281d, #261d15);
   color: #ecd9b1;
   border-radius: 9999px;
+  min-height: 40px;
   padding: 0.44rem 0.98rem;
   font-size: 0.93rem;
   font-weight: 600;
@@ -244,6 +267,7 @@
   width: 100%;
   border: 1px solid rgba(255, 236, 192, 0.35);
   border-radius: 8px;
+  min-height: 42px;
   background: linear-gradient(90deg, #e0be77, #c38f3e);
   color: #24180e;
   padding: 0.58rem;
@@ -269,6 +293,10 @@
 .order-panel-header span {
   color: #d9c5a0;
   font-size: 0.88rem;
+}
+
+.order-count {
+  font-weight: 600;
 }
 
 .empty-order {
@@ -327,10 +355,15 @@
   border: 1px solid rgba(214, 177, 92, 0.35);
   background: rgba(30, 21, 15, 0.9);
   border-radius: 6px;
-  min-width: 28px;
-  height: 28px;
+  min-width: 34px;
+  height: 34px;
   padding: 0;
   color: #f7e5be;
+}
+
+.qty-value {
+  min-width: 1.3rem;
+  text-align: center;
 }
 
 .remove-button {
@@ -366,6 +399,17 @@
   margin-top: 0.95rem;
   border-top: 1px solid rgba(214, 177, 92, 0.25);
   padding-top: 0.85rem;
+}
+
+.checkout-fieldset {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.checkout-fieldset + .checkout-fieldset {
+  margin-top: 0.8rem;
 }
 
 .checkout-section-title {
@@ -416,11 +460,18 @@
   outline-offset: 1px;
 }
 
+.checkout-note {
+  margin: 0.65rem 0 0;
+  font-size: 0.74rem;
+  color: #cdb58c;
+}
+
 .clear-button {
   width: 100%;
   margin-top: 0.9rem;
   border: 1px solid rgba(214, 177, 92, 0.42);
   border-radius: 8px;
+  min-height: 42px;
   background: linear-gradient(180deg, rgba(53, 38, 27, 0.95), rgba(40, 28, 20, 0.95));
   color: #f0debb;
   padding: 0.58rem;
@@ -432,6 +483,7 @@
   margin-top: 0.9rem;
   border: 1px solid rgba(255, 236, 192, 0.36);
   border-radius: 8px;
+  min-height: 42px;
   background: linear-gradient(90deg, #e0be77, #c38f3e);
   color: #24180e;
   padding: 0.58rem;
@@ -452,6 +504,10 @@
   margin: 0.75rem 0 0;
   font-size: 0.84rem;
   color: #f0debb;
+}
+
+.order-feedback.error {
+  color: #ffd1c8;
 }
 
 .clear-button:disabled {
@@ -643,6 +699,10 @@
   color: #9d7d57;
 }
 
+.theme-casual .checkout-note {
+  color: #8e6640;
+}
+
 .theme-casual .clear-button {
   border-color: rgba(187, 144, 85, 0.5);
   background: linear-gradient(180deg, rgba(252, 242, 224, 0.96), rgba(245, 229, 203, 0.97));
@@ -665,6 +725,10 @@
 
 .theme-casual .order-feedback {
   color: #69472b;
+}
+
+.theme-casual .order-feedback.error {
+  color: #8c2f2f;
 }
 
 .theme-casual .clear-button:disabled {
@@ -694,15 +758,80 @@
 }
 
 @media (max-width: 600px) {
+  .page {
+    padding: 1.2rem 0.72rem 1.6rem;
+  }
+
+  .hero {
+    padding: 1.35rem 1rem;
+  }
+
+  .categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .category-button {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.88rem;
+  }
+
+  .menu-panel,
+  .order-panel {
+    padding: 0.88rem;
+  }
+
+  .menu-card {
+    padding: 0.82rem;
+  }
+
   .food-image.zoomed {
     height: 310px;
+  }
+
+  .order-controls {
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .qty-button {
+    min-width: 38px;
+    height: 38px;
+  }
+
+  .remove-button {
+    margin-left: 0;
   }
 
   .checkout-grid {
     grid-template-columns: 1fr;
   }
 
+  .checkout-field input {
+    font-size: 16px;
+    padding: 0.62rem 0.6rem;
+  }
+
+  .add-button,
+  .place-order-button,
+  .clear-button {
+    min-height: 44px;
+  }
+
   .nutrition-list {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-button,
+  .add-button,
+  .place-order-button,
+  .clear-button,
+  .food-image {
+    transition: none;
   }
 }
