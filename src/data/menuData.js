@@ -606,4 +606,33 @@ export const foodMenu = [
       sugar: 10,
     },
   },
+  {
+    id: 'zucchini-ribbon-pomodoro',
+    name: 'Zucchini Ribbon Pomodoro',
+    category: 'Healthy',
+    description:
+      'Zucchini ribbons in rustic tomato sauce finished with grated Parmesan cheese.',
+    price: 12.49,
+    image: getLocalHealthyImage(
+      'zucchini-ribbon-pomodoro',
+      createFoodImage('zucchini,pomodoro,healthy,pasta', 110),
+    ),
+    serves: '1 person (dinner plate)',
+    ingredients: [
+      'Zucchini ribbons',
+      'Tomato sauce',
+      'Garlic',
+      'Olive oil',
+      'Parmesan cheese',
+      'Fresh herbs',
+      'Salt and black pepper',
+    ],
+    nutrition: {
+      calories: 160,
+      protein: 7,
+      carbs: 18,
+      fat: 16,
+      sugar: 9,
+    },
+  },
 ]
