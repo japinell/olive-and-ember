@@ -21,6 +21,7 @@ import {
   selectOrderItemCount,
   selectOrderItems,
   selectOrderProtein,
+  selectOrderSugar,
   selectOrderSubtotal,
   selectOrderTotal,
 } from './features/order/orderSlice'
@@ -126,6 +127,7 @@ function App() {
   const orderProtein = useSelector(selectOrderProtein)
   const orderCarbs = useSelector(selectOrderCarbs)
   const orderFat = useSelector(selectOrderFat)
+  const orderSugar = useSelector(selectOrderSugar)
 
   const filteredMenuItems =
     selectedCategory === 'All'
@@ -298,6 +300,12 @@ function App() {
                         <li>
                           <strong>Fat:</strong> {item.nutrition.fat}g
                         </li>
+                        <li>
+                          <strong>Sugar:</strong>{' '}
+                          {typeof item.nutrition.sugar === 'number'
+                            ? `${item.nutrition.sugar}g`
+                            : '—'}
+                        </li>
                       </ul>
                   </InfoAccordion>
 
@@ -429,6 +437,9 @@ function App() {
               </p>
               <p>
                 Fat: <strong>{orderFat}g</strong>
+              </p>
+              <p>
+                Sugar: <strong>{orderSugar}g</strong>
               </p>
             </div>
 

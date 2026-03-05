@@ -110,4 +110,10 @@ export const selectOrderFat = (state) =>
     0,
   )
 
+export const selectOrderSugar = (state) =>
+  state.order.items.reduce(
+    (total, item) => total + (item.nutrition.sugar ?? 0) * item.quantity,
+    0,
+  )
+
 export default orderSlice.reducer
