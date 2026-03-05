@@ -395,6 +395,14 @@
   margin-top: 0.4rem;
 }
 
+.order-summary .order-discount {
+  color: #cdeec9;
+}
+
+.order-summary .order-discount strong {
+  color: #ddf7d9;
+}
+
 .checkout-form {
   margin-top: 0.95rem;
   border-top: 1px solid rgba(214, 177, 92, 0.25);
@@ -650,6 +658,14 @@
 .theme-casual .order-ingredients-preview,
 .theme-casual .order-summary p {
   color: #69472b;
+}
+
+.theme-casual .order-summary .order-discount {
+  color: #2f7b3a;
+}
+
+.theme-casual .order-summary .order-discount strong {
+  color: #23672d;
 }
 
 .theme-casual .order-item {

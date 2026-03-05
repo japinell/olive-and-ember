@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const comboEligibleMainCategories = new Set([
+  'Pizza',
+  'Burgers',
+  'Salads',
+  'Bowls',
+  'Healthy',
+])
+
 const orderSlice = createSlice({
   name: 'order',
   initialState: {
@@ -53,8 +61,30 @@ export const selectOrderItems = (state) => state.order.items
 export const selectOrderItemCount = (state) =>
   state.order.items.reduce((count, item) => count + item.quantity, 0)
 
-export const selectOrderTotal = (state) =>
+export const selectOrderSubtotal = (state) =>
   state.order.items.reduce((total, item) => total + item.price * item.quantity, 0)
+
+export const selectOrderHasValueCombo = (state) => {
+  const hasDrink = state.order.items.some(
+    (item) => item.category === 'Drinks' && item.quantity > 0,
+  )
+  const hasMain = state.order.items.some(
+    (item) => comboEligibleMainCategories.has(item.category) && item.quantity > 0,
+  )
+
+  return hasDrink && hasMain
+}
+
+export const selectOrderComboDiscount = (state) => {
+  if (!selectOrderHasValueCombo(state)) {
+    return 0
+  }
+
+  return selectOrderSubtotal(state) * 0.1
+}
+
+export const selectOrderTotal = (state) =>
+  selectOrderSubtotal(state) - selectOrderComboDiscount(state)
 
 export const selectOrderCalories = (state) =>
   state.order.items.reduce(

@@ -10,6 +10,7 @@ The app lets users:
 - Click food images to zoom in/out
 - Add and remove items from an order
 - Adjust item quantities and see order totals + nutrition summary
+- Automatically apply a 10% value combo discount (at least 1 drink + 1 main)
 - Fill customer and payment details in a checkout form
 - Simulate placing an order and receive an order confirmation message
 

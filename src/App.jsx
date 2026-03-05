@@ -12,12 +12,15 @@ import {
   selectOrderCarbs,
   clearOrder,
   decreaseOrderItem,
+  selectOrderComboDiscount,
   selectOrderFat,
+  selectOrderHasValueCombo,
   removeFromOrder,
   selectOrderCalories,
   selectOrderItemCount,
   selectOrderItems,
   selectOrderProtein,
+  selectOrderSubtotal,
   selectOrderTotal,
 } from './features/order/orderSlice'
 
@@ -43,6 +46,9 @@ function App() {
   const menuItems = useSelector(selectMenuItems)
   const orderItems = useSelector(selectOrderItems)
   const orderItemCount = useSelector(selectOrderItemCount)
+  const orderSubtotal = useSelector(selectOrderSubtotal)
+  const orderComboDiscount = useSelector(selectOrderComboDiscount)
+  const orderHasValueCombo = useSelector(selectOrderHasValueCombo)
   const orderTotal = useSelector(selectOrderTotal)
   const orderCalories = useSelector(selectOrderCalories)
   const orderProtein = useSelector(selectOrderProtein)
@@ -286,6 +292,14 @@ function App() {
             )}
 
             <div className="order-summary">
+              <p>
+                Subtotal: <strong>${orderSubtotal.toFixed(2)}</strong>
+              </p>
+              {orderHasValueCombo && (
+                <p className="order-discount">
+                  Value Combo (10%): <strong>-${orderComboDiscount.toFixed(2)}</strong>
+                </p>
+              )}
               <p>
                 Total: <strong>${orderTotal.toFixed(2)}</strong>
               </p>

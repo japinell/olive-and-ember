@@ -54,7 +54,7 @@ export const foodMenu = [
     name: 'Margherita Pizza',
     category: 'Pizza',
     description: 'Wood-fired crust, tomato sauce, fresh mozzarella, and basil.',
-    price: 13.5,
+    price: 12.49,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Pizza_Margherita_stu_spivack.jpg/1200px-Pizza_Margherita_stu_spivack.jpg',
     serves: '2 people (6 slices)',
@@ -78,7 +78,7 @@ export const foodMenu = [
     name: 'Spicy Pepperoni Pizza',
     category: 'Pizza',
     description: 'Pepperoni, chili flakes, mozzarella, and roasted garlic oil.',
-    price: 15,
+    price: 13.49,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Pepperoni_Pizza_%2829204589095%29.jpg/1200px-Pepperoni_Pizza_%2829204589095%29.jpg',
     serves: '2 people (6 slices)',
@@ -102,7 +102,7 @@ export const foodMenu = [
     name: 'Classic Cheeseburger',
     category: 'Burgers',
     description: 'Beef patty, cheddar, lettuce, tomato, pickles, and brioche bun.',
-    price: 12.75,
+    price: 11.49,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/1200px-Cheeseburger.jpg',
     serves: '1 person (1 burger)',
@@ -126,7 +126,7 @@ export const foodMenu = [
     name: 'Turkey Avocado Burger',
     category: 'Burgers',
     description: 'Lean turkey patty, avocado, red onion, and herb aioli.',
-    price: 13.25,
+    price: 11.99,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/RedDot_Burger.jpg/1200px-RedDot_Burger.jpg',
     serves: '1 person (1 burger)',
@@ -150,7 +150,7 @@ export const foodMenu = [
     name: 'Grilled Caesar Salad',
     category: 'Salads',
     description: 'Romaine, parmesan, croutons, grilled chicken, and Caesar dressing.',
-    price: 11.5,
+    price: 9.49,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Caesar_salad_%282%29.jpg/1200px-Caesar_salad_%282%29.jpg',
     serves: '1 person (large bowl)',
@@ -174,7 +174,7 @@ export const foodMenu = [
     name: 'Mediterranean Salad',
     category: 'Salads',
     description: 'Mixed greens, cucumbers, tomatoes, olives, feta, and lemon vinaigrette.',
-    price: 10.95,
+    price: 8.99,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Greece_Food_Horiatiki.JPG/1200px-Greece_Food_Horiatiki.JPG',
     serves: '1 person (large bowl)',
@@ -198,7 +198,7 @@ export const foodMenu = [
     name: 'Teriyaki Chicken Bowl',
     category: 'Bowls',
     description: 'Steamed rice, teriyaki chicken, broccoli, carrots, and sesame seeds.',
-    price: 12.95,
+    price: 11.99,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/22nd_June_2012_Teriyaki_Duck.jpg/1200px-22nd_June_2012_Teriyaki_Duck.jpg',
     serves: '1 person (meal bowl)',
@@ -222,7 +222,7 @@ export const foodMenu = [
     name: 'Veggie Power Bowl',
     category: 'Bowls',
     description: 'Quinoa, chickpeas, roasted vegetables, kale, and tahini drizzle.',
-    price: 11.95,
+    price: 10.99,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/BuddhaBowlLot.jpg/1200px-BuddhaBowlLot.jpg',
     serves: '1 person (meal bowl)',
@@ -246,7 +246,7 @@ export const foodMenu = [
     name: 'Chocolate Lava Cake',
     category: 'Desserts',
     description: 'Warm chocolate cake with a molten center and vanilla cream.',
-    price: 7.25,
+    price: 5.99,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Chocolate_Fondant.jpg/1200px-Chocolate_Fondant.jpg',
     serves: '1 person (1 cake)',
@@ -270,7 +270,7 @@ export const foodMenu = [
     name: 'Berry Yogurt Parfait',
     category: 'Desserts',
     description: 'Greek yogurt layered with berries, honey, and granola.',
-    price: 6.75,
+    price: 4.99,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Parfait_samples_by_pinguino_in_Osaka%2C_Japan.jpg/1200px-Parfait_samples_by_pinguino_in_Osaka%2C_Japan.jpg',
     serves: '1 person (1 parfait cup)',
@@ -293,7 +293,7 @@ export const foodMenu = [
     name: 'Sparkling Citrus Cooler',
     category: 'Drinks',
     description: 'Lemon-lime sparkling beverage with fresh mint and orange zest.',
-    price: 4.95,
+    price: 2.99,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Lemonade_-_27682817724.jpg/1200px-Lemonade_-_27682817724.jpg',
     serves: '1 person (12 oz)',
@@ -317,7 +317,7 @@ export const foodMenu = [
     name: 'Unsweetened Iced Tea',
     category: 'Drinks',
     description: 'Fresh-brewed black tea served chilled with lemon.',
-    price: 3.95,
+    price: 2.49,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Y%C3%AAn_H%C3%B2a_Parkview_City_29-07-2025_Mme_Th%E1%BB%A7y_Iced_Tea_E03.jpg/1200px-Y%C3%AAn_H%C3%B2a_Parkview_City_29-07-2025_Mme_Th%E1%BB%A7y_Iced_Tea_E03.jpg',
     serves: '1 person (12 oz)',
@@ -339,7 +339,7 @@ export const foodMenu = [
     name: 'Classic Tomato Bruschetta',
     category: 'Healthy',
     description: 'Grilled bread topped with fresh tomatoes, basil, and grated Parmesan cheese.',
-    price: 13.25,
+    price: 8.49,
     image: getLocalHealthyImage(
       'classic-tomato-bruschetta',
       createFoodImage('bruschetta,tomato,appetizer', 101),
@@ -365,7 +365,7 @@ export const foodMenu = [
     name: 'Mini Egg Frittatas',
     category: 'Healthy',
     description: 'Bite-sized egg frittatas with vegetables and cheese.',
-    price: 13.95,
+    price: 8.99,
     image: getLocalHealthyImage(
       'mini-egg-frittatas',
       createFoodImage('egg,frittatas,healthy', 102),
@@ -391,7 +391,7 @@ export const foodMenu = [
     name: 'Italian Street Piadina Fold',
     category: 'Healthy',
     description: 'Delicious Italian flatbread folded with fresh ingredients.',
-    price: 14.85,
+    price: 9.99,
     image: getLocalHealthyImage(
       'italian-street-piadina-fold',
       createFoodImage('piadina,italian,healthy', 103),
@@ -418,7 +418,7 @@ export const foodMenu = [
     name: 'Light Tiramisu Cup',
     category: 'Healthy',
     description: 'A lighter version of the classic Italian dessert.',
-    price: 15.25,
+    price: 6.99,
     image: getLocalHealthyImage(
       'light-tiramisu-cup',
       createFoodImage('tiramisu,italian,healthy', 104),
