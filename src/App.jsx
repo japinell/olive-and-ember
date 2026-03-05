@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { AnimatePresence, MotionConfig, motion } from 'motion/react'
 import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
 import {
@@ -34,6 +35,77 @@ const createInitialCheckoutForm = () => ({
   cardExpiry: '',
   cardCvc: '',
 })
+
+const ACCORDION_EASE = [0.22, 1, 0.36, 1]
+const MotionSpan = motion.span
+const MotionDiv = motion.div
+
+function InfoAccordion({ id, className, label, icon, defaultOpen = false, children }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen)
+  const triggerId = `${id}-trigger`
+  const contentId = `${id}-content`
+
+  return (
+    <div className={`info-accordion ${className}`}>
+      <button
+        type="button"
+        id={triggerId}
+        className="info-accordion-trigger"
+        aria-expanded={isOpen}
+        aria-controls={contentId}
+        onClick={() => setIsOpen((currentOpen) => !currentOpen)}
+      >
+        {icon}
+        <span>{label}</span>
+        <MotionSpan
+          initial={false}
+          className="info-accordion-chevron"
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.22, ease: ACCORDION_EASE }}
+          aria-hidden="true"
+        >
+          ▾
+        </MotionSpan>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <MotionDiv
+            key="content"
+            id={contentId}
+            role="region"
+            aria-labelledby={triggerId}
+            className="info-accordion-content"
+            style={{ overflow: 'hidden' }}
+            initial={{ height: 0, opacity: 0, filter: 'blur(2px)' }}
+            animate={{
+              height: 'auto',
+              opacity: 1,
+              filter: 'blur(0px)',
+              transition: {
+                height: { duration: 0.3, ease: ACCORDION_EASE, delay: 0.05 },
+                opacity: { duration: 0.22, ease: 'easeOut', delay: 0.05 },
+                filter: { duration: 0.22, ease: 'easeOut', delay: 0.05 },
+              },
+            }}
+            exit={{
+              height: 0,
+              opacity: 0,
+              filter: 'blur(2px)',
+              transition: {
+                height: { duration: 0.24, ease: [0.4, 0, 1, 1] },
+                opacity: { duration: 0.16, ease: 'easeIn' },
+                filter: { duration: 0.16, ease: 'easeIn' },
+              },
+            }}
+          >
+            <div className="info-accordion-content-inner">{children}</div>
+          </MotionDiv>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
 
 function App() {
   const dispatch = useDispatch()
@@ -115,7 +187,8 @@ function App() {
   }
 
   return (
-    <div className="page theme-casual">
+    <MotionConfig reducedMotion="user">
+      <div className="page theme-casual">
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
@@ -191,30 +264,72 @@ function App() {
                     <strong>Serves:</strong> {item.serves}
                   </p>
 
-                  <ul className="nutrition-list" aria-label={`${item.name} nutritional values`}>
-                    <li>
-                      <strong>Calories:</strong> {item.nutrition.calories}
-                    </li>
-                    <li>
-                      <strong>Protein:</strong> {item.nutrition.protein}g
-                    </li>
-                    <li>
-                      <strong>Carbs:</strong> {item.nutrition.carbs}g
-                    </li>
-                    <li>
-                      <strong>Fat:</strong> {item.nutrition.fat}g
-                    </li>
-                  </ul>
+                  <InfoAccordion
+                    id={`${item.id}-nutrition`}
+                    className="nutrition-accordion"
+                    label="Nutritional Information"
+                    defaultOpen
+                    icon={
+                      <span className="info-card-icon info-card-icon-nutrition" aria-hidden="true">
+                        <svg
+                          className="info-card-icon-svg"
+                          viewBox="0 0 16 16"
+                          focusable="false"
+                          aria-hidden="true"
+                        >
+                          <path d="M2.5 13.5h11" />
+                          <path d="M4 13V9.5" />
+                          <path d="M8 13V7" />
+                          <path d="M12 13V4.5" />
+                        </svg>
+                      </span>
+                    }
+                  >
+                      <ul className="nutrition-list" aria-label={`${item.name} nutritional values`}>
+                        <li>
+                          <strong>Calories:</strong> {item.nutrition.calories}
+                        </li>
+                        <li>
+                          <strong>Protein:</strong> {item.nutrition.protein}g
+                        </li>
+                        <li>
+                          <strong>Carbs:</strong> {item.nutrition.carbs}g
+                        </li>
+                        <li>
+                          <strong>Fat:</strong> {item.nutrition.fat}g
+                        </li>
+                      </ul>
+                  </InfoAccordion>
 
                   {item.ingredients?.length > 0 && (
-                    <div className="ingredients-block">
-                      <strong>Ingredients:</strong>
+                    <InfoAccordion
+                      id={`${item.id}-ingredients`}
+                      className="ingredients-accordion"
+                      label="Ingredients"
+                      icon={
+                        <span className="info-card-icon info-card-icon-ingredients" aria-hidden="true">
+                          <svg
+                            className="info-card-icon-svg"
+                            viewBox="0 0 16 16"
+                            focusable="false"
+                            aria-hidden="true"
+                          >
+                            <circle cx="3" cy="4" r="0.9" />
+                            <circle cx="3" cy="8" r="0.9" />
+                            <circle cx="3" cy="12" r="0.9" />
+                            <path d="M6 4h7" />
+                            <path d="M6 8h7" />
+                            <path d="M6 12h7" />
+                          </svg>
+                        </span>
+                      }
+                    >
                       <ul className="ingredients-list" aria-label={`${item.name} ingredients`}>
                         {item.ingredients.map((ingredient, index) => (
                           <li key={`${item.id}-ingredient-${index}`}>{ingredient}</li>
                         ))}
                       </ul>
-                    </div>
+                    </InfoAccordion>
                   )}
 
                   <button
@@ -481,7 +596,8 @@ function App() {
           </aside>
         </div>
       </main>
-    </div>
+      </div>
+    </MotionConfig>
   )
 }
 
